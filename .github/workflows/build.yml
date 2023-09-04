@@ -3,7 +3,7 @@ on: [workflow_dispatch]
 
 jobs:
   build:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
     strategy:
       fail-fast: false
