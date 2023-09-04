@@ -9,7 +9,7 @@ jobs:
       fail-fast: false
       matrix:
         keymap:
-          - combos
+          - combo
 
     steps:
       - name: Disable git safe directory checks
