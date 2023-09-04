@@ -8,11 +8,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        side:
-          - left
-          - right
-        board:
-          - a_dux
+        keymap:
+          - combos
 
     steps:
       - name: Disable git safe directory checks
@@ -30,18 +27,14 @@ jobs:
           path: users/${{ github.actor }}
 
       - name: Compile
-        env:
-          side: ${{ matrix.side }}
-          board: ${{ matrix.board }}
-          path: users/${{ github.actor }}
         run: >
-          qmk compile "$path/keymap.json"
+          qmk compile "users/${{ github.actor }}/keymaps/${{ matrix.keymap }}.json"
 
       - name: Archive output
         uses: actions/upload-artifact@v3
         with:
           retention-days: 60
-          name: ${{ matrix.board }}_${{ matrix.side }}
+          name: ${{ matrix.keymap }}_${{ github.actor }}
           path: |
             *.hex
             *.bin
