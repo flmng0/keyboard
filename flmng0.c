@@ -1,5 +1,11 @@
 #include "flmng0.h"
 
+#ifdef COMBO_ENABLE
+#ifndef COMBO_END
+#  warning "COMBO_END not defined"
+#  defined COMBO_END 0x0
+#endif
+
 const uint16_t PROGMEM lparen[] = {KC_T, KC_D, COMBO_END};
 const uint16_t PROGMEM rparen[] = {KC_N, KC_H, COMBO_END};
 
@@ -25,4 +31,4 @@ combo_t key_combos[] = {
   COMBO(langle, LSFT(KC_COMMA)),
   COMBO(rangle, LSFT(KC_DOT))
 };
-/* const uint16t  */
+#endif // COMBO_ENABLE
