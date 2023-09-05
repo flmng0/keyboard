@@ -1,5 +1,4 @@
+INTROSPECTION_KEYMAP_C = flmng0.c
+
 COMBO_ENABLE = yes
-
-SRC += flmng0.c
-
-VPATH += keyboard/gboards
+VPATH += keyboard/gboards/
