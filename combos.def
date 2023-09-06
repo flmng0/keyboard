@@ -7,7 +7,7 @@ COMB(c_lbracket, KC_LEFT_BRACKET       , KC_S, KC_C    )
 COMB(c_rbracket, KC_RIGHT_BRACKET      , KC_E, KC_COMMA)
 
 COMB(c_lbrace  , LSFT(KC_LEFT_BRACKET) , KC_G, KC_V    ) 
-COMB(c_lbrace  , LSFT(KC_RIGHT_BRACKET), KC_M, KC_K    ) 
+COMB(c_rbrace  , LSFT(KC_RIGHT_BRACKET), KC_M, KC_K    ) 
 
 COMB(c_langle  , LSFT(KC_COMMA)        , KC_R, KC_X    )
 COMB(c_rangle  , LSFT(KC_DOT)          , KC_I, KC_DOT  )
