@@ -38,7 +38,7 @@ const uint16_t PROGMEM c_tab[] = {KC_T, KC_G, COMBO_END};
 
 const uint16_t PROGMEM c_delete[] = {KC_J, KC_L, COMBO_END};
 const uint16_t PROGMEM c_return[] = {KC_M, KC_N, COMBO_END};
-const uint16_t PROGMEM c_backspace = {KC_K, KC_H, COMBO_END};
+const uint16_t PROGMEM c_backspace[] = {KC_K, KC_H, COMBO_END};
 
 combo_t key_combos[] = {
   // Parenthesis
