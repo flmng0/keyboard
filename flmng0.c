@@ -52,7 +52,7 @@ combo_t key_combos[] = {
   COMBO(c_rbrace, LSFT(KC_RIGHT_BRACKET)),
 
   COMBO(c_langle, LSFT(KC_COMMA)),
-  COMBO(c_rangle, LSFT(KC_DOT))
+  COMBO(c_rangle, LSFT(KC_DOT)),
 
   // Functional buttons
   COMBO(c_escape, KC_ESCAPE),
@@ -60,7 +60,7 @@ combo_t key_combos[] = {
 
   COMBO(c_delete, KC_DELETE),
   COMBO(c_return, KC_ENTER),
-  COMBO(c_backspace, KC_BACKSPACE),
+  COMBO(c_backspace, KC_BACKSPACE)
 };
 
 COMBO_REF_LAYER(1, 0)
