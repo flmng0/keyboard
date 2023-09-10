@@ -1,2 +1,2 @@
 COMBO_ENABLE = yes
-SRC += flmng0.c
+INTROSPECTION_KEYMAP_C = flmng0.c
