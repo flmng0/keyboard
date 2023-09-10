@@ -37,10 +37,10 @@
       "KC_COMM",
       "KC_DOT",
       "KC_SLSH",
-      "KC_SPC",
       "MO(2)",
-      "MO(3)",
-      "KC_LSFT"
+      "KC_SPC",
+      "KC_LSFT",
+      "MO(3)"
     ],
     [
       "KC_Q",
@@ -73,10 +73,10 @@
       "KC_COMM",
       "KC_DOT",
       "KC_SLSH",
-      "KC_SPC",
       "MO(2)",
-      "MO(3)",
-      "KC_LSFT"
+      "KC_SPC",
+      "KC_LSFT",
+      "MO(3)"
     ],
     [
       "KC_NO",
@@ -109,10 +109,10 @@
       "KC_LSFT",
       "KC_LALT",
       "KC_LGUI",
-      "KC_NO",
       "KC_TRNS",
-      "MO(4)",
-      "KC_NO"
+      "KC_NO",
+      "KC_NO",
+      "MO(4)"
     ],
     [
       "KC_EXLM",
@@ -145,10 +145,10 @@
       "KC_LSFT",
       "KC_LALT",
       "KC_LGUI",
-      "KC_NO",
       "MO(4)",
-      "KC_TRNS",
-      "KC_NO"
+      "KC_NO",
+      "KC_NO",
+      "KC_TRNS"
     ],
     [
       "KC_NO",
@@ -181,10 +181,10 @@
       "KC_P2",
       "KC_P3",
       "KC_NO",
+      "KC_TRNS",
       "KC_NO",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_NO"
+      "KC_NO",
+      "KC_TRNS"
     ]
   ],
   "author": "Timothy Davis"
