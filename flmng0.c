@@ -47,10 +47,6 @@ const uint16_t PROGMEM c_delete[] = {KC_J, KC_L, COMBO_END};
 const uint16_t PROGMEM c_return[] = {KC_M, KC_N, COMBO_END};
 const uint16_t PROGMEM c_backspace[] = {KC_K, KC_H, COMBO_END};
 
-/**
- * Layer combos.
- */
-const uint16_t PROGMEM c_num[] = {MO(L_NAV), MO(L_SYM), COMBO_END};
 
 combo_t key_combos[] = {
   // Parenthesis
@@ -78,8 +74,9 @@ combo_t key_combos[] = {
   COMBO(c_delete, KC_DELETE),
   COMBO(c_return, KC_ENTER),
   COMBO(c_backspace, KC_BACKSPACE),
-
-  // Layer switch
-  COMBO(c_num, MO(L_NUM))
 };
 
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  return update_tri_layer_state(state, L_NAV, L_SYM, L_NUM);
+}
