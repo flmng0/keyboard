@@ -1,4 +1,4 @@
-#include "flmng0.h"
+#include "quantum.h"
 
 #ifndef COMBO_END
 #warning "COMBO_END not defined?"
@@ -32,7 +32,6 @@ const uint16_t PROGMEM c_rangle[] = {KC_I, KC_DOT, COMBO_END};
  * MN => Return
  * KH = Backspace
  */
-
 const uint16_t PROGMEM c_escape[] = {KC_P, KC_B, COMBO_END};
 const uint16_t PROGMEM c_tab[] = {KC_T, KC_G, COMBO_END};
 
