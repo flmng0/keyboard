@@ -5,10 +5,18 @@
 #define L_SYM 2
 #define L_NUM 3
 
+/**
+ * Control tap key definitions
+ */
+#define CT_C LT(0, KC_C)
+#define CT_V LT(0, KC_V)
+#define CT_X LT(0, KC_X)
+#define CT_Z LT(0, KC_Z)
+
 #define _BASE \
   KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, \
   KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , KC_M   , KC_N   , KC_E   , KC_I   , KC_O   , \
-  KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , KC_K   , KC_H   , KC_COMM, KC_DOT , KC_SLSH, \
+  CT_Z   , CT_X   , CT_C   , KC_D   , CT_Z   , KC_K   , KC_H   , KC_COMM, KC_DOT , KC_SLSH, \
                            MO(L_NAV), KC_SPC , KC_LSFT, MO(L_SYM)
 
 #define _NAV \

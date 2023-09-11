@@ -34,7 +34,7 @@ const uint16_t PROGMEM c_underscore[] = {KC_V, KC_K, COMBO_END};
  * Left Side:
  * PB => Esc
  * TG => Tab
- * 
+ *
  * Right Side:
  * JL => Delete
  * MN => Return
@@ -46,7 +46,6 @@ const uint16_t PROGMEM c_tab[] = {KC_T, KC_G, COMBO_END};
 const uint16_t PROGMEM c_delete[] = {KC_J, KC_L, COMBO_END};
 const uint16_t PROGMEM c_return[] = {KC_M, KC_N, COMBO_END};
 const uint16_t PROGMEM c_backspace[] = {KC_K, KC_H, COMBO_END};
-
 
 combo_t key_combos[] = {
   // Parenthesis
@@ -76,6 +75,24 @@ combo_t key_combos[] = {
   COMBO(c_backspace, KC_BACKSPACE),
 };
 
+#define CT_IMPL(key)                                   \
+  case LT(0, KC_##key):                                \
+    if (!record->tap.count && record->event.pressed) { \
+      tap_code16(C(KC_##key));                         \
+      return false;                                    \
+    }                                                  \
+    return true;
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    CT_IMPL(C)
+    CT_IMPL(V)
+    CT_IMPL(X)
+    CT_IMPL(Z)
+  }
+
+  return true;
+}
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, L_NAV, L_SYM, L_NUM);
