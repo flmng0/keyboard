@@ -1,9 +1,22 @@
+#pragma once
 #include "quantum.h"
 
 #ifndef COMBO_END
 #warning "COMBO_END not defined?"
 #define COMBO_END 0
 #endif
+
+enum layers {
+  L_BASE,
+  L_GAME,
+  L_NAV,
+  L_SYM,
+  L_NUM
+};
+/* enum keycodes { */
+/*   U_NAV = SAFE_RANGE, */
+/*   U_NUM, */
+/* }; */
 
 /**
  * Parenthesis.
@@ -23,6 +36,13 @@ const uint16_t PROGMEM c_langle[] = {KC_R, KC_X, COMBO_END};
 const uint16_t PROGMEM c_rangle[] = {KC_I, KC_DOT, COMBO_END};
 
 /**
+ * Common symbols.
+ */
+const uint16_t PROGMEM c_hyphen[] = {KC_B, KC_J, COMBO_END};
+const uint16_t PROGMEM c_equals[] = {KC_G, KC_M, COMBO_END};
+const uint16_t PROGMEM c_underscore[] = {KC_V, KC_K, COMBO_END};
+
+/**
  * Left Side:
  * PB => Esc
  * TG => Tab
@@ -39,6 +59,11 @@ const uint16_t PROGMEM c_delete[] = {KC_J, KC_L, COMBO_END};
 const uint16_t PROGMEM c_return[] = {KC_M, KC_N, COMBO_END};
 const uint16_t PROGMEM c_backspace[] = {KC_K, KC_H, COMBO_END};
 
+/**
+ * Layer combos.
+ */
+const uint16_t PROGMEM c_num[] = {MO(L_NAV), MO(L_SYM), COMBO_END};
+
 combo_t key_combos[] = {
   // Parenthesis
   COMBO(c_lparen, LSFT(KC_9)),
@@ -53,13 +78,21 @@ combo_t key_combos[] = {
   COMBO(c_langle, LSFT(KC_COMMA)),
   COMBO(c_rangle, LSFT(KC_DOT)),
 
+  // Common symbols
+  COMBO(c_hyphen, KC_MINUS),
+  COMBO(c_equals, KC_EQUAL),
+  COMBO(c_underscore, LSFT(KC_MINUS)),
+
   // Functional buttons
   COMBO(c_escape, KC_ESCAPE),
   COMBO(c_tab, KC_TAB),
 
   COMBO(c_delete, KC_DELETE),
   COMBO(c_return, KC_ENTER),
-  COMBO(c_backspace, KC_BACKSPACE)
+  COMBO(c_backspace, KC_BACKSPACE),
+
+  // Layer switch
+  COMBO(c_num, MO(L_NUM))
 };
 
 uint8_t combo_ref_from_layer(uint8_t layer) {
