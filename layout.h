@@ -28,3 +28,5 @@
   KC_NO  , KC_F4  , KC_F5  , KC_F6  , KC_F11 , KC_P0  , KC_P4  , KC_P5  , KC_P6  , KC_NO  , \
   KC_NO  , KC_F1  , KC_F2  , KC_F3  , KC_F10 , KC_UNDS, KC_P1  , KC_P2  , KC_P3  , KC_NO  , \
                              KC_TRNS, KC_NO  , KC_NO  , KC_TRNS
+
+#define LAYOUT_a_dux_wrap(...) LAYOUT_split_3x5_2(__VA_ARGS__)

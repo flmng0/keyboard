@@ -4,7 +4,7 @@
   "documentation": "34 key keymap heavily utilising combos",
   "keyboard": "a_dux",
   "keymap": "flmng0",
-  "layout": "LAYOUT_split_3x5_2",
+  "layout": "LAYOUT_a_dux_wrap",
   "layers": [
     [ "_BASE" ],
     [ "_NAV" ],
