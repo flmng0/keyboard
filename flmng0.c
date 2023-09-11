@@ -6,18 +6,6 @@
 #define COMBO_END 0
 #endif
 
-enum layers {
-  L_BASE,
-  L_GAME,
-  L_NAV,
-  L_SYM,
-  L_NUM
-};
-/* enum keycodes { */
-/*   U_NAV = SAFE_RANGE, */
-/*   U_NUM, */
-/* }; */
-
 /**
  * Parenthesis.
  *
