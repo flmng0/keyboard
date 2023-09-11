@@ -83,9 +83,3 @@ combo_t key_combos[] = {
   COMBO(c_num, MO(L_NUM))
 };
 
-uint8_t combo_ref_from_layer(uint8_t layer) {
-  if (get_highest_layer(layer_state) == 1) { return 0; }
-
-  return layer;
-}
-
