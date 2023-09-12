@@ -32,20 +32,20 @@ const uint16_t PROGMEM c_underscore[] = {KC_V, KC_K, COMBO_END};
 
 /**
  * Left Side:
- * PB => Esc
- * TG => Tab
+ * FP => Esc
+ * ST => Tab
  *
  * Right Side:
- * JL => Delete
- * MN => Return
- * KH = Backspace
+ * LU => Delete
+ * NE => Return
+ * H, = Backspace
  */
-const uint16_t PROGMEM c_escape[] = {KC_P, KC_B, COMBO_END};
-const uint16_t PROGMEM c_tab[] = {KC_T, KC_G, COMBO_END};
+const uint16_t PROGMEM c_escape[] = {KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM c_tab[] = {KC_S, KC_T, COMBO_END};
 
-const uint16_t PROGMEM c_delete[] = {KC_J, KC_L, COMBO_END};
-const uint16_t PROGMEM c_return[] = {KC_M, KC_N, COMBO_END};
-const uint16_t PROGMEM c_backspace[] = {KC_K, KC_H, COMBO_END};
+const uint16_t PROGMEM c_delete[] = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM c_return[] = {KC_N, KC_E, COMBO_END};
+const uint16_t PROGMEM c_backspace[] = {KC_H, KC_COMMA, COMBO_END};
 
 combo_t key_combos[] = {
   // Parenthesis
