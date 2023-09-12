@@ -3,6 +3,10 @@
 #include "quantum.h"
 #include "layout.h"
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+  return update_tri_layer_state(state, ID_NAV, ID_SYM, ID_NUM);
+}
+
 /**
  * Parenthesis.
  *
@@ -103,6 +107,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+  // With super-light key switches, it's easy to unintentially hold down a key
+  // for a little bit with heavy fingers.
+  //
+  // We don't wont to activate control-tab keys by accident.
   if (IS_CT(keycode)) {
     return TAPPING_TERM + 400;
   }
@@ -110,6 +118,17 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   return TAPPING_TERM;
 }
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, ID_NAV, ID_SYM, ID_NUM);
+uint16_t get_combo_term(uint16_t index, combo_t *combo) {
+  // Since return and tab combos are on the home row, the movement to roll-over
+  // is quite fast, and would be frustrating to misfire.
+  //
+  // 25 is still possible to misfire, but harder, and is definitely possible to
+  // do on purpose.
+  switch (combo->keycode) {
+    case CT(KC_RETN):
+    case KC_TAB:
+      return 25;
+  }
+
+  return COMBO_TERM;
 }
