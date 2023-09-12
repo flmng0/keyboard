@@ -20,6 +20,8 @@
 #define CT_X LT(0, KC_X)
 #define CT_Z LT(0, KC_Z)
 
+#define CT_RETN LT(0, KC_RETN)
+
 #define _BASE \
   KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, \
   KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , KC_M   , KC_N   , KC_E   , KC_I   , KC_O   , \
@@ -34,7 +36,7 @@
 
 #define _SYM \
   KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_BSLS, KC_COLN, \
-  KC_TILD, KC_GRV , KC_DQUO, KC_QUOT, KC_NO  , KC_ENT , KC_PIPE, KC_PLUS, KC_MINS, KC_QUES, \
+  KC_TILD, KC_GRV , KC_DQUO, KC_QUOT, KC_NO  , KC_RETN, KC_PIPE, KC_PLUS, KC_MINS, KC_QUES, \
   KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NO  , KC_NO  , KC_LCTL, KC_LSFT, KC_LALT, KC_LGUI, \
                              L_NAV  , KC_TRNS, KC_TRNS, KC_TRNS
 

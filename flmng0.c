@@ -68,7 +68,7 @@ combo_t key_combos[] = {
   COMBO(c_tab, KC_TAB),
 
   COMBO(c_delete, KC_DELETE),
-  COMBO(c_return, KC_ENTER),
+  COMBO(c_return, CT_RETN),
   COMBO(c_backspace, KC_BACKSPACE),
 };
 
@@ -80,15 +80,29 @@ combo_t key_combos[] = {
     }                                                  \
     return true;
 
+#define IS_CT(code) (code & 0x4000) && ((code >> 8) & 0xF)
+#define CT_KC(code) (code & 0xFF)
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    CT_IMPL(C)
-    CT_IMPL(V)
-    CT_IMPL(X)
-    CT_IMPL(Z)
+  if (IS_CT(keycode)) {
+    if (!record->tap.count && record->event.pressed) {
+      tap_code16(C(CT_KC(keycode)));
+      return false;
+    }
   }
 
   return true;
+
+  /**/
+  /* switch (keycode) { */
+  /*   CT_IMPL(C) */
+  /*   CT_IMPL(V) */
+  /*   CT_IMPL(X) */
+  /*   CT_IMPL(Z) */
+  /*   CT_IMPL(RETN) */
+  /* } */
+  /**/
+  /* return true; */
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
