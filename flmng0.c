@@ -1,10 +1,7 @@
 #pragma once
-#include "quantum.h"
 
-#ifndef COMBO_END
-#warning "COMBO_END not defined?"
-#define COMBO_END 0
-#endif
+#include "quantum.h"
+#include "layout.h"
 
 /**
  * Parenthesis.
@@ -95,5 +92,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, L_NAV, L_SYM, L_NUM);
+  return update_tri_layer_state(state, ID_NAV, ID_SYM, ID_NUM);
 }

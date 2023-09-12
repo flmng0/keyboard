@@ -9,7 +9,8 @@
     [ "_BASE" ],
     [ "_NAV" ],
     [ "_SYM" ],
-    [ "_NUM" ]
+    [ "_NUM" ],
+    [ "_GAME" ]
   ],
   "author": "Timothy Davis"
 }
