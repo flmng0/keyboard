@@ -80,7 +80,7 @@ combo_t key_combos[] = {
     }                                                  \
     return true;
 
-#define IS_CT(code) (code & 0x4000) && ((code >> 8) & 0xF)
+#define IS_CT(code) (code & QK_LAYER_TAP) && (((code >> 8) & 0xF) == 0)
 #define CT_KC(code) (code & 0xFF)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
