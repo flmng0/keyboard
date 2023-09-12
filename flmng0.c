@@ -72,37 +72,42 @@ combo_t key_combos[] = {
   COMBO(c_backspace, KC_BACKSPACE),
 };
 
-#define CT_IMPL(key)                                   \
-  case LT(0, KC_##key):                                \
-    if (!record->tap.count && record->event.pressed) { \
-      tap_code16(C(KC_##key));                         \
-      return false;                                    \
-    }                                                  \
-    return true;
-
+/**
+ * Check whether a certain keycode is a "Control Tap" keycode.
+ *
+ * We use LT(0, <code>) to represent a Control Tap, so we need to check:
+ *  1. Is the code a Layer Tap:
+ *    ((code & QK_LAYER_TAP) != 0)
+ *  2. Is the layer for that layer tap equal to 0:
+ *    (((code >> 8) & 0xF) == 0)
+ */
 #define IS_CT(code) (code & QK_LAYER_TAP) && (((code >> 8) & 0xF) == 0)
-#define CT_KC(code) (code & 0xFF)
+
+/**
+ * Extract the desired key from a "Control Tap" keycode.
+ *
+ * The key is stored in the right-most 8-bits in a Layer-Tap code.
+ */
+#define CT_KC(code) C(code & 0xFF)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (IS_CT(keycode)) {
     if (!record->tap.count && record->event.pressed) {
-      tap_code16(C(CT_KC(keycode)));
+      uint16_t new_code = CT_KC(keycode);
+      tap_code16(new_code);
       return false;
     }
   }
 
   return true;
+}
 
-  /**/
-  /* switch (keycode) { */
-  /*   CT_IMPL(C) */
-  /*   CT_IMPL(V) */
-  /*   CT_IMPL(X) */
-  /*   CT_IMPL(Z) */
-  /*   CT_IMPL(RETN) */
-  /* } */
-  /**/
-  /* return true; */
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+  if (IS_CT(keycode)) {
+    return TAPPING_TERM + 400;
+  }
+
+  return TAPPING_TERM;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
