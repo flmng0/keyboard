@@ -72,7 +72,7 @@ combo_t key_combos[] = {
   COMBO(c_tab, KC_TAB),
 
   COMBO(c_delete, KC_DELETE),
-  COMBO(c_return, CT_RETN),
+  COMBO(c_return, KC_RETURN),
   COMBO(c_backspace, KC_BACKSPACE),
 };
 
