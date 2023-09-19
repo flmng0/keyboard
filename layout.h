@@ -28,7 +28,7 @@
 #define _BASE \
   KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, \
   KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , KC_M   , KC_N   , KC_E   , KC_I   , KC_O   , \
-  BM_Z   , BM_X   , BM_C   , BM_D   , BM_V   , KC_K   , BM_H   , BM_COMM, BM_DOT , BM_QUOT, \
+  BM_Z   , BM_X   , BM_C   , BM_D   , KC_V   , KC_K   , BM_H   , BM_COMM, BM_DOT , BM_QUOT, \
                              L_NAV  , KC_SPC , KC_BSPC, L_SYM
 
 #define _NAV \
