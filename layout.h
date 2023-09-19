@@ -12,7 +12,7 @@
 #define LT_NAV(code) LT(ID_NAV, code)
 #define LT_SYM(code) LT(ID_SYM, code)
 
-#define L_NAV LT_NAV(KC_TAB)
+#define L_NAV LT_NAV(KC_SPACE)
 #define L_SYM LT_SYM(KC_ENTER)
 
 #define BM_Z LGUI_T(KC_Z)
@@ -29,7 +29,7 @@
   KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, \
   KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , KC_M   , KC_N   , KC_E   , KC_I   , KC_O   , \
   BM_Z   , BM_X   , BM_C   , BM_D   , KC_V   , KC_K   , BM_H   , BM_COMM, BM_DOT , BM_QUOT, \
-                             L_NAV  , KC_SPC , KC_BSPC, L_SYM
+                             KC_TAB , L_NAV  , L_SYM  , KC_BSPC
 
 #define _NAV \
   KC_ESC , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_HOME, KC_PGDN, KC_PGUP, KC_END , \
