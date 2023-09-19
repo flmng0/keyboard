@@ -12,17 +12,17 @@ layer_state_t layer_state_set_user(layer_state_t state) {
  *
  * Open on left hand, close on right hand.
  */
-const uint16_t PROGMEM c_lparen[] = {KC_T, KC_D, COMBO_END};
-const uint16_t PROGMEM c_rparen[] = {KC_N, KC_H, COMBO_END};
+const uint16_t PROGMEM c_lparen[] = {KC_T, BM_D, COMBO_END};
+const uint16_t PROGMEM c_rparen[] = {KC_N, BM_H, COMBO_END};
 
-const uint16_t PROGMEM c_lbracket[] = {KC_S, KC_C, COMBO_END};
-const uint16_t PROGMEM c_rbracket[] = {KC_E, KC_COMMA, COMBO_END};
+const uint16_t PROGMEM c_lbracket[] = {KC_S, BM_C, COMBO_END};
+const uint16_t PROGMEM c_rbracket[] = {KC_E, BM_COMM, COMBO_END};
 
 const uint16_t PROGMEM c_lbrace[] = {KC_G, KC_V, COMBO_END};
 const uint16_t PROGMEM c_rbrace[] = {KC_M, KC_K, COMBO_END};
 
-const uint16_t PROGMEM c_langle[] = {KC_R, KC_X, COMBO_END};
-const uint16_t PROGMEM c_rangle[] = {KC_I, KC_DOT, COMBO_END};
+const uint16_t PROGMEM c_langle[] = {KC_R, BM_X, COMBO_END};
+const uint16_t PROGMEM c_rangle[] = {KC_I, BM_DOT, COMBO_END};
 
 /**
  * Common symbols.
