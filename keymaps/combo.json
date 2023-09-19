@@ -6,7 +6,7 @@
   "keymap": "flmng0",
   "layout": "LAYOUT_a_dux_wrap",
   "layers": [
-    [ "_BASE" ],
+    [ "BRM(_BASE)" ],
     [ "_NAV" ],
     [ "_SYM" ],
     [ "_NUM" ],
