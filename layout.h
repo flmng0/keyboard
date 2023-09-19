@@ -17,13 +17,13 @@
 
 /* Macro to apply bottom-row-mods (BRMs) */
 #define BRM( \
-    AA, BA, CA, DA, EA, FA, GA, HA, IA, JA \
-    AB, BB, CB, DB, EB, FB, GB, HB, IB, JB \
-    AC, BC, CC, DC, EC, FC, GC, HC, IC, JC \
+    AA, BA, CA, DA, EA, FA, GA, HA, IA, JA, \
+    AB, BB, CB, DB, EB, FB, GB, HB, IB, JB, \
+    AC, BC, CC, DC, EC, FC, GC, HC, IC, JC, \
                 TA, TB, TC, TE)            \
-    AA        , BA        , CA        , DA        , EA  , FA  , GA        , HA        , IA        , JA         \
-    AB        , BB        , CB        , DB        , EB  , FB  , GB        , HB        , IB        , JB         \
-    LGUI_T(AC), LALT_T(BC), LSFT_T(CC), LCTL_T(DC), EC  , FC  , RCTL_T(GC), RSFT_T(HC), LALT_T(IC), RGUI_T(JC) \
+    AA        , BA        , CA        , DA        , EA  , FA  , GA        , HA        , IA        , JA        , \
+    AB        , BB        , CB        , DB        , EB  , FB  , GB        , HB        , IB        , JB        , \
+    LGUI_T(AC), LALT_T(BC), LSFT_T(CC), LCTL_T(DC), EC  , FC  , RCTL_T(GC), RSFT_T(HC), LALT_T(IC), RGUI_T(JC), \
                                                 TA, TB  , TC  , TE
 
 #define _BASE \
