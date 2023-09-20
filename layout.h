@@ -37,7 +37,7 @@
   KC_ESC , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_HOME, KC_PGDN, KC_PGUP, KC_END , \
   CW_TOGG, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, \
   KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NO  , KC_NO  , KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, \
-                             KC_TRNS, KC_TRNS, KC_TRNS, LT_SYM(KC_DEL)
+                             KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL
 
 #define _SYM \
   KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_SLSH, KC_COLN, \
