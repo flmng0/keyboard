@@ -15,6 +15,8 @@
 #define L_NAV LT_NAV(KC_SPACE)
 #define L_SYM LT_SYM(KC_ENTER)
 
+#define S_TAB LSFT_T(KC_TAB)
+
 #define BM_Z LGUI_T(KC_Z)
 #define BM_X LALT_T(KC_X)
 #define BM_C LSFT_T(KC_C)
@@ -29,7 +31,7 @@
   KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, \
   KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , KC_M   , KC_N   , KC_E   , KC_I   , KC_O   , \
   BM_Z   , BM_X   , BM_C   , BM_D   , KC_V   , KC_K   , BM_H   , BM_COMM, BM_DOT , BM_QUOT, \
-                             KC_TAB , L_NAV  , L_SYM  , KC_BSPC
+                             S_TAB  , L_NAV  , L_SYM  , KC_BSPC
 
 #define _NAV \
   KC_ESC , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_HOME, KC_PGDN, KC_PGUP, KC_END , \
@@ -41,7 +43,7 @@
   KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_SLSH, KC_COLN, \
   KC_TILD, KC_GRV , KC_DQUO, KC_BSLS, KC_NO  , KC_NO  , KC_PIPE, KC_PLUS, KC_MINS, KC_QUES, \
   KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NO  , KC_ENT , KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, \
-                             L_NAV  , KC_TRNS, KC_TRNS, KC_TRNS
+                             S_TAB  , KC_TRNS, KC_TRNS, KC_TRNS
 
 #define _NUM \
   KC_NO  , KC_F7  , KC_F8  , KC_F9  , KC_F12 , KC_UNDS, KC_7   , KC_8   , KC_9   , D_GAME , \
