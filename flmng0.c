@@ -51,3 +51,14 @@ combo_t key_combos[] = {
   COMBO(c_underscore, LSFT(KC_MINUS)),
 };
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record){
+  switch (keycode) {
+    case L_NAV:
+    case L_SYM:
+      return TAPPING_TERM + 200;
+  }
+
+  return TAPPING_TERM;
+}
+
+
