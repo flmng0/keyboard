@@ -3,10 +3,6 @@
 #include "quantum.h"
 #include "layout.h"
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, ID_NAV, ID_SYM, ID_NUM);
-}
-
 /**
  * Parenthesis.
  *
@@ -51,14 +47,44 @@ combo_t key_combos[] = {
   COMBO(c_underscore, LSFT(KC_MINUS)),
 };
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record){
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case L_NAV:
     case L_SYM:
       return TAPPING_TERM + 200;
-  }
 
-  return TAPPING_TERM;
+    default:
+      return TAPPING_TERM;
+  }
 }
 
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case L_NAV:
+    case L_SYM:
+    case L_NUM:
+      return false;
+
+    default:
+      return true;
+  }
+}
+
+bool caps_word_press_user(uint16_t keycode) {
+  switch (keycode) {
+    case KC_A ... KC_Z:
+      add_weak_mods(MOD_BIT(KC_LSFT));
+      return true;
+
+    case KC_1 ... KC_0:
+    case KC_BSPC:
+    case KC_DEL:
+    case KC_UNDS:
+    case KC_MINS:
+      return true;
+
+    default:
+      return false;
+  }
+}
 
