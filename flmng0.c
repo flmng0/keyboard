@@ -8,17 +8,17 @@
  *
  * Open on left hand, close on right hand.
  */
-const uint16_t PROGMEM c_lparen[] = {KC_T, BM_D, COMBO_END};
-const uint16_t PROGMEM c_rparen[] = {KC_N, BM_H, COMBO_END};
+const uint16_t PROGMEM c_lparen[] = {HM_T, KC_D, COMBO_END};
+const uint16_t PROGMEM c_rparen[] = {HM_N, KC_H, COMBO_END};
 
-const uint16_t PROGMEM c_lbracket[] = {KC_S, BM_C, COMBO_END};
-const uint16_t PROGMEM c_rbracket[] = {KC_E, BM_COMM, COMBO_END};
+const uint16_t PROGMEM c_lbracket[] = {HM_S, KC_C, COMBO_END};
+const uint16_t PROGMEM c_rbracket[] = {HM_E, KC_COMM, COMBO_END};
 
 const uint16_t PROGMEM c_lbrace[] = {KC_G, KC_V, COMBO_END};
 const uint16_t PROGMEM c_rbrace[] = {KC_M, KC_K, COMBO_END};
 
-const uint16_t PROGMEM c_langle[] = {KC_R, BM_X, COMBO_END};
-const uint16_t PROGMEM c_rangle[] = {KC_I, BM_DOT, COMBO_END};
+const uint16_t PROGMEM c_langle[] = {HM_R, KC_X, COMBO_END};
+const uint16_t PROGMEM c_rangle[] = {HM_I, KC_DOT, COMBO_END};
 
 /**
  * Common symbols.
@@ -88,3 +88,33 @@ bool caps_word_press_user(uint16_t keycode) {
   }
 }
 
+#define ROLLOVER(kca, kcb, modded_b, mod_a) \
+  case modded_b: \
+    if (record->event.pressed && record->tap.count > 0) { \
+      if (mods & MOD_BIT(mod_a)) { \
+        unregister_mods(MOD_BIT(mod_a)); \
+        tap_code(kca); \
+        tap_code(kcb); \
+        add_mods(MOD_BIT(mod_a)); \
+        return false; \
+      } \
+    } \
+    return true;
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  uint8_t mods = get_mods();
+
+  switch (keycode) {
+    ROLLOVER(KC_A, KC_R, HM_R, KC_LGUI);
+    ROLLOVER(KC_R, KC_S, HM_S, KC_LALT);
+    ROLLOVER(KC_S, KC_T, HM_T, KC_LSFT);
+    ROLLOVER(KC_T, KC_G, KC_G, KC_LCTL);
+
+    ROLLOVER(KC_N, KC_M, KC_M, KC_RCTL);
+    ROLLOVER(KC_E, KC_N, HM_N, KC_RSFT);
+    ROLLOVER(KC_I, KC_E, HM_E, KC_LALT);
+    ROLLOVER(KC_O, KC_I, HM_I, KC_RGUI);
+  }
+
+  return true;
+}
