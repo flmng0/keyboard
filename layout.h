@@ -56,7 +56,7 @@
 #define _NAV \
   KC_ESC , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_HOME, KC_PGDN, KC_PGUP, KC_END , \
   CW_TOGG, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, \
-  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NO  , KC_NO  , KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, \
+  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NO  , KC_NO  , KC_H   , KC_J   , KC_K   , KC_L   , \
                              KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL
 
 #define _SYM \
