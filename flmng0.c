@@ -146,6 +146,9 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
       return true;
 
   #endif
+
+    case KC_SCLN:
+      return true;
   }
 
   return false;
