@@ -19,16 +19,8 @@
 
 /* #define S_TAB LSFT_T(KC_TAB) */
 
-#define BM_Z LGUI_T(KC_Z)
-#define BM_X LALT_T(KC_X)
-#define BM_C LSFT_T(KC_C)
-#define BM_D LCTL_T(KC_D)
 
-#define BM_H    RCTL_T(KC_H)
-#define BM_COMM RSFT_T(KC_COMM)
-#define BM_DOT  LALT_T(KC_DOT)
-#define BM_QUOT RGUI_T(KC_QUOT)
-
+#ifdef HOME_ROW_MODS
 
 #define HM_A LGUI_T(KC_A)
 #define HM_R LALT_T(KC_R)
@@ -40,18 +32,69 @@
 #define HM_I LALT_T(KC_I)
 #define HM_O RGUI_T(KC_O)
 
+#define CC_T HM_T
+#define CC_D KC_D
 
-#define _BASE_HRM \
+#define CC_N HM_N
+#define CC_H KC_H
+
+#define CC_S HM_S
+#define CC_C KC_C
+
+#define CC_E    HM_E
+#define CC_COMM KC_COMM
+
+#define CC_R HM_R
+#define CC_X KC_X
+
+#define CC_I   HM_I
+#define CC_DOT KC_DOT
+
+
+#define _BASE \
   KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, \
   HM_A   , HM_R   , HM_S   , HM_T   , KC_G   , KC_M   , HM_N   , HM_E   , HM_I   , HM_O   , \
   KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , KC_K   , KC_H   , KC_COMM, KC_DOT , KC_QUOT, \
                              L_NUM  , L_NAV  , L_SYM  , KC_BSPC
 
-#define _BASE_BRM \
+#else
+
+#define BM_Z LGUI_T(KC_Z)
+#define BM_X LALT_T(KC_X)
+#define BM_C LSFT_T(KC_C)
+#define BM_D LCTL_T(KC_D)
+
+#define BM_H    RCTL_T(KC_H)
+#define BM_COMM RSFT_T(KC_COMM)
+#define BM_DOT  LALT_T(KC_DOT)
+#define BM_QUOT RGUI_T(KC_QUOT)
+
+#define CC_T KC_T
+#define CC_D BM_D
+
+#define CC_N KC_N
+#define CC_H BM_H
+
+#define CC_S KC_S
+#define CC_C BM_C
+
+#define CC_E    KC_E
+#define CC_COMM BM_COMM
+
+#define CC_R KC_R
+#define CC_X BM_X
+
+#define CC_I   KC_I
+#define CC_DOT BM_DOT
+
+
+#define _BASE \
   KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, \
   KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , KC_M   , KC_N   , KC_E   , KC_I   , KC_O   , \
   BM_Z   , BM_X   , BM_C   , BM_D   , KC_V   , KC_K   , BM_H   , BM_COMM, BM_DOT , BM_QUOT, \
                              L_NUM  , L_NAV  , L_SYM  , KC_BSPC
+
+#endif
 
 #define _NAV \
   KC_ESC , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_HOME, KC_PGDN, KC_PGUP, KC_END , \
@@ -76,6 +119,10 @@
   KC_LSFT, KC_A   , KC_W   , KC_D   , KC_E   , KC_R   , KC_T   , KC_NO  , KC_NO  , KC_NO  , \
   KC_LCTL, KC_Z   , KC_S   , KC_X   , KC_C   , KC_V   , KC_B   , KC_NO  , KC_NO  , KC_NO  , \
                              KC_LALT, KC_SPC , KC_NO  , KC_NO
+
+// TODO: finish off the gaming alternate layer
+/* #define _GAME_ALT \ */
+/*   KC_ESC , KC_5   , KC_6   , KC_7   , KC_8   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , \ */
 
 
 #define LAYOUT_a_dux_wrap(...) LAYOUT_split_3x5_2(__VA_ARGS__)

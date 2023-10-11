@@ -8,17 +8,17 @@
  *
  * Open on left hand, close on right hand.
  */
-const uint16_t PROGMEM c_lparen[] = {HM_T, KC_D, COMBO_END};
-const uint16_t PROGMEM c_rparen[] = {HM_N, KC_H, COMBO_END};
+const uint16_t PROGMEM c_lparen[] = {CC_T, CC_D, COMBO_END};
+const uint16_t PROGMEM c_rparen[] = {CC_N, CC_H, COMBO_END};
 
-const uint16_t PROGMEM c_lbracket[] = {HM_S, KC_C, COMBO_END};
-const uint16_t PROGMEM c_rbracket[] = {HM_E, KC_COMM, COMBO_END};
+const uint16_t PROGMEM c_lbracket[] = {CC_S, CC_C, COMBO_END};
+const uint16_t PROGMEM c_rbracket[] = {CC_E, CC_COMM, COMBO_END};
 
 const uint16_t PROGMEM c_lbrace[] = {KC_G, KC_V, COMBO_END};
 const uint16_t PROGMEM c_rbrace[] = {KC_M, KC_K, COMBO_END};
 
-const uint16_t PROGMEM c_langle[] = {HM_R, KC_X, COMBO_END};
-const uint16_t PROGMEM c_rangle[] = {HM_I, KC_DOT, COMBO_END};
+const uint16_t PROGMEM c_langle[] = {CC_R, CC_X, COMBO_END};
+const uint16_t PROGMEM c_rangle[] = {CC_I, CC_DOT, COMBO_END};
 
 /**
  * Common symbols.
@@ -88,6 +88,70 @@ bool caps_word_press_user(uint16_t keycode) {
   }
 }
 
+/* bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) { */
+/*   switch (keycode) { */
+/*   #ifdef HOME_ROW_MODS */
+/*     case HM_A: */
+/*     case HM_R: */
+/*     case HM_S: */
+/*     case HM_T: */
+/*     case HM_N: */
+/*     case HM_E: */
+/*     case HM_I: */
+/*     case HM_O: */
+/*       return true; */
+/**/
+/*   #else */
+/*     case BM_Z: */
+/*     case BM_X: */
+/*     case BM_C: */
+/*     case BM_D: */
+/*     case BM_H: */
+/*     case BM_COMM: */
+/*     case BM_DOT: */
+/*     case BM_QUOT: */
+/*       return true; */
+/*   #endif */
+/**/
+/*     case KC_A ... KC_Z: */
+/*     case KC_TAB: */
+/*       return true; */
+/*   } */
+/**/
+/*   return false; */
+/* } */
+
+bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+  #ifdef HOME_ROW_MODS
+    case HM_A:
+    case HM_R:
+    case HM_S:
+    case HM_T:
+    case HM_N:
+    case HM_E:
+    case HM_I:
+    case HM_O:
+      return true;
+
+  #else
+    case BM_Z:
+    case BM_X:
+    case BM_C:
+    case BM_D:
+    case BM_H:
+    case BM_COMM:
+    case BM_DOT:
+    case BM_QUOT:
+      return true;
+
+  #endif
+  }
+
+  return false;
+}
+
+#ifdef HOME_ROW_MODS
 #define ROLLOVER(kca, kcb, modded_b, mod_a) \
   case modded_b: \
     if (record->event.pressed && record->tap.count > 0) { \
@@ -100,8 +164,10 @@ bool caps_word_press_user(uint16_t keycode) {
       } \
     } \
     return true;
+#endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  #ifdef HOME_ROW_MODS
   uint8_t mods = get_mods();
 
   switch (keycode) {
@@ -115,6 +181,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     ROLLOVER(KC_I, KC_E, HM_E, KC_LALT);
     ROLLOVER(KC_O, KC_I, HM_I, KC_RGUI);
   }
+  #endif
 
   return true;
 }
