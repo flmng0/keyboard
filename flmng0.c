@@ -122,6 +122,10 @@ bool caps_word_press_user(uint16_t keycode) {
 /* } */
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+  if (get_highest_layer(layer_state) != ID_BASE) {
+    return false;
+  }
+
   switch (keycode) {
   #ifdef HOME_ROW_MODS
     case HM_A:
