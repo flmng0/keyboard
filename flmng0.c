@@ -88,39 +88,6 @@ bool caps_word_press_user(uint16_t keycode) {
   }
 }
 
-/* bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) { */
-/*   switch (keycode) { */
-/*   #ifdef HOME_ROW_MODS */
-/*     case HM_A: */
-/*     case HM_R: */
-/*     case HM_S: */
-/*     case HM_T: */
-/*     case HM_N: */
-/*     case HM_E: */
-/*     case HM_I: */
-/*     case HM_O: */
-/*       return true; */
-/**/
-/*   #else */
-/*     case BM_Z: */
-/*     case BM_X: */
-/*     case BM_C: */
-/*     case BM_D: */
-/*     case BM_H: */
-/*     case BM_COMM: */
-/*     case BM_DOT: */
-/*     case BM_QUOT: */
-/*       return true; */
-/*   #endif */
-/**/
-/*     case KC_A ... KC_Z: */
-/*     case KC_TAB: */
-/*       return true; */
-/*   } */
-/**/
-/*   return false; */
-/* } */
-
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
   if (get_highest_layer(layer_state) != ID_BASE) {
     return false;
