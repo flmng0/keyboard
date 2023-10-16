@@ -1,7 +1,8 @@
 #pragma once
 
-#include "quantum.h"
 #include "layout.h"
+#include "process_auto_shift.h"
+#include "quantum.h"
 
 /**
  * Parenthesis.
@@ -49,99 +50,107 @@ combo_t key_combos[] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case L_NAV:
-    case L_SYM:
-      return TAPPING_TERM + 200;
+  case L_NAV:
+  case L_SYM:
+    return TAPPING_TERM + 200;
 
-    default:
-      return TAPPING_TERM;
+  default:
+    return TAPPING_TERM;
   }
 }
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case L_NAV:
-    case L_SYM:
-    case L_NUM:
-      return false;
+  case L_NAV:
+  case L_SYM:
+  case L_NUM:
+    return false;
 
-    default:
-      return true;
+  default:
+    return true;
   }
 }
 
 bool caps_word_press_user(uint16_t keycode) {
   switch (keycode) {
-    case KC_A ... KC_Z:
-      add_weak_mods(MOD_BIT(KC_LSFT));
-      return true;
+  case KC_A ... KC_Z:
+    add_weak_mods(MOD_BIT(KC_LSFT));
+    return true;
 
-    case KC_1 ... KC_0:
-    case KC_BSPC:
-    case KC_DEL:
-    case KC_UNDS:
-    case KC_MINS:
-      return true;
+  case KC_1 ... KC_0:
+  case KC_BSPC:
+  case KC_DEL:
+  case KC_UNDS:
+  case KC_MINS:
+    return true;
 
-    default:
-      return false;
+  default:
+    return false;
   }
 }
 
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
-  if (get_highest_layer(layer_state) != ID_BASE) {
-    return false;
-  }
-
   switch (keycode) {
-  #ifdef HOME_ROW_MODS
-    case HM_A:
-    case HM_R:
-    case HM_S:
-    case HM_T:
-    case HM_N:
-    case HM_E:
-    case HM_I:
-    case HM_O:
-      return true;
+#ifdef HOME_ROW_MODS
+  case HM_A:
+  case HM_R:
+  case HM_S:
+  case HM_T:
+  case HM_N:
+  case HM_E:
+  case HM_I:
+  case HM_O:
+    return true;
 
-  #else
-    case BM_Z:
-    case BM_X:
-    case BM_C:
-    case BM_D:
-    case BM_H:
-    case BM_COMM:
-    case BM_DOT:
-    case BM_QUOT:
-      return true;
+#else
+  case BM_Z:
+  case BM_X:
+  case BM_C:
+  case BM_D:
+  case BM_H:
+  case BM_COMM:
+  case BM_DOT:
+  case BM_QUOT:
+    return true;
 
-  #endif
+#endif
 
-    case KC_SCLN:
-      return true;
+  case KC_SCLN:
+    return true;
   }
 
   return false;
 }
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+  switch (get_highest_layer(state)) {
+  case ID_BASE:
+    autoshift_enable();
+    break;
+
+  default:
+    autoshift_disable();
+    break;
+  }
+}
+
 #ifdef HOME_ROW_MODS
-#define ROLLOVER(kca, kcb, modded_b, mod_a) \
-  case modded_b: \
-    if (record->event.pressed && record->tap.count > 0) { \
-      if (mods & MOD_BIT(mod_a)) { \
-        unregister_mods(MOD_BIT(mod_a)); \
-        tap_code(kca); \
-        tap_code(kcb); \
-        add_mods(MOD_BIT(mod_a)); \
-        return false; \
-      } \
-    } \
+#define ROLLOVER(kca, kcb, modded_b, mod_a)                                    \
+  case modded_b:                                                               \
+    if (record->event.pressed && record->tap.count > 0) {                      \
+      if (mods & MOD_BIT(mod_a)) {                                             \
+        unregister_mods(MOD_BIT(mod_a));                                       \
+        tap_code(kca);                                                         \
+        tap_code(kcb);                                                         \
+        add_mods(MOD_BIT(mod_a));                                              \
+        return false;                                                          \
+      }                                                                        \
+    }                                                                          \
     return true;
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  #ifdef HOME_ROW_MODS
+#ifdef HOME_ROW_MODS
   uint8_t mods = get_mods();
 
   switch (keycode) {
@@ -155,7 +164,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     ROLLOVER(KC_I, KC_E, HM_E, KC_LALT);
     ROLLOVER(KC_O, KC_I, HM_I, KC_RGUI);
   }
-  #endif
+#endif
 
   return true;
 }
