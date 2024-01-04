@@ -84,10 +84,13 @@ bool process_hrm(uint16_t keycode, keyrecord_t *record) {
     break;
 
   default:
-    idle_timer = timer_read32();
+    if (!record->event.pressed) 
+      idle_timer = timer_read32();
   }
 
   return true;
 }
+
+#define IS_IDLE (timer_elapsed32(idle_timer) >= HRM_IDLE_DELAY)
 
 #endif // HRM_LAYOUT_ONLY

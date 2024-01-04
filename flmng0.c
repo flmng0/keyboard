@@ -16,36 +16,62 @@
 #endif
 
 /**
+ * Num row symbols.
+ */
+#define COMBO_DEF(var, ...) \
+  const uint16_t PROGMEM var[] = {__VA_ARGS__, COMBO_END}
+
+COMBO_DEF(c_at, KC_W, CC_R);
+COMBO_DEF(c_pound, KC_F, CC_S);
+COMBO_DEF(c_dollar, KC_P, CC_T);
+COMBO_DEF(c_percent, KC_B, KC_G);
+
+COMBO_DEF(c_carat, KC_J, KC_M);
+COMBO_DEF(c_and, KC_L, CC_N);
+COMBO_DEF(c_star, KC_U, CC_E);
+COMBO_DEF(c_slash, KC_Y, CC_I);
+
+/**
  * Parenthesis.
  *
  * Open on left hand, close on right hand.
  */
-const uint16_t PROGMEM c_lparen[] = {CC_T, CC_D, COMBO_END};
-const uint16_t PROGMEM c_rparen[] = {CC_N, CC_H, COMBO_END};
+COMBO_DEF(c_lparen, CC_T, CC_S);
+COMBO_DEF(c_rparen, CC_N, CC_E);
 
-const uint16_t PROGMEM c_lbracket[] = {CC_S, CC_C, COMBO_END};
-const uint16_t PROGMEM c_rbracket[] = {CC_E, CC_COMM, COMBO_END};
+COMBO_DEF(c_lbracket, CC_T, CC_R);
+COMBO_DEF(c_rbracket, CC_N, CC_I);
 
-const uint16_t PROGMEM c_lbrace[] = {KC_G, KC_V, COMBO_END};
-const uint16_t PROGMEM c_rbrace[] = {KC_M, KC_K, COMBO_END};
+COMBO_DEF(c_lbrace, CC_S, CC_R);
+COMBO_DEF(c_rbrace, CC_N, CC_E);
 
-const uint16_t PROGMEM c_langle[] = {CC_R, CC_X, COMBO_END};
-const uint16_t PROGMEM c_rangle[] = {CC_I, CC_DOT, COMBO_END};
+COMBO_DEF(c_langle, CC_T, CC_S, CC_R);
+COMBO_DEF(c_rangle, CC_N, CC_E, CC_I);
 
 /**
  * Common symbols.
  */
-const uint16_t PROGMEM c_hyphen[] = {KC_B, KC_J, COMBO_END};
-const uint16_t PROGMEM c_equals[] = {KC_G, KC_M, COMBO_END};
-const uint16_t PROGMEM c_underscore[] = {KC_V, KC_K, COMBO_END};
+COMBO_DEF(c_hyphen, KC_B, KC_J);
+COMBO_DEF(c_equals, KC_G, KC_M);
+COMBO_DEF(c_underscore, KC_V, KC_K);
 
 /**
  * Functional keys.
  */
-const uint16_t PROGMEM c_backspace[] = {KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM c_delete[] = {KC_U, KC_Y, COMBO_END};
+COMBO_DEF(c_backspace, KC_L, KC_U);
+COMBO_DEF(c_delete, KC_U, KC_Y);
 
 combo_t key_combos[] = {
+  // Upper Symbols
+  COMBO(c_at,      LSFT(KC_2)),
+  COMBO(c_pound,   LSFT(KC_3)),
+  COMBO(c_dollar,  LSFT(KC_4)),
+  COMBO(c_percent, LSFT(KC_5)),
+  COMBO(c_carat,   LSFT(KC_6)),
+  COMBO(c_and,     LSFT(KC_7)),
+  COMBO(c_star,    LSFT(KC_8)),
+  COMBO(c_slash,   LSFT(KC_9)),
+
   // Parenthesis
   COMBO(c_lparen, LSFT(KC_9)),
   COMBO(c_rparen, LSFT(KC_0)),

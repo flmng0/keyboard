@@ -17,11 +17,11 @@
 #define L_SYM LT_SYM(KC_ENTER)
 #define L_NUM LT_NUM(KC_TAB)
 
-#define TH_LA LT_NUM(KC_ENTER)
+#define TH_LA LT_NUM(KC_TAB)
 #define TH_LH LT_NAV(KC_SPACE)
 
-#define TH_RH OSM(MOD_LSFT)
-#define TH_RA KC_BACKSPACE
+#define TH_RH LT_SYM(KC_ENTER)
+#define TH_RA OSM(MOD_LSFT)
 
 #ifdef HOME_ROW_MODS
 
