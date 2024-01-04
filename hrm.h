@@ -1,3 +1,4 @@
+#include "caps_word.h"
 #ifndef HRM_LAYOUT_ONLY
 #  include "keycode.h"
 #  include "quantum.h"
@@ -39,7 +40,7 @@
   KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, \
   HM_A   , HM_R   , HM_S   , HM_T   , KC_G   , KC_M   , HM_N   , HM_E   , HM_I   , HM_O   , \
   KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , KC_K   , KC_H   , KC_COMM, KC_DOT , KC_QUOT, \
-                             L_NUM  , L_NAV  , L_SYM  , KC_BSPC
+                             TH_LA  , TH_LH  , TH_RH  , TH_RA
 
 #endif
 
@@ -70,8 +71,10 @@ bool process_hrm(uint16_t keycode, keyrecord_t *record) {
 #undef HM_ITER
     if (record->event.pressed) {
       if (timer_elapsed32(idle_timer) < HRM_IDLE_DELAY) {
+        if (is_caps_word_on()) {
+          add_weak_mods(MOD_BIT(KC_LSFT));
+        }
         tap_code(HRM_TAP_CODE(keycode));
-        idle_timer = timer_read32();
         return false;
       }
     }

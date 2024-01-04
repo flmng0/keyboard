@@ -17,6 +17,12 @@
 #define L_SYM LT_SYM(KC_ENTER)
 #define L_NUM LT_NUM(KC_TAB)
 
+#define TH_LA LT_NUM(KC_ENTER)
+#define TH_LH LT_NAV(KC_SPACE)
+
+#define TH_RH OSM(MOD_LSFT)
+#define TH_RA KC_BACKSPACE
+
 #ifdef HOME_ROW_MODS
 
 # define HRM_LAYOUT_ONLY
@@ -59,7 +65,7 @@
   KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, \
   KC_A   , KC_R   , KC_S   , KC_T   , KC_G   , KC_M   , KC_N   , KC_E   , KC_I   , KC_O   , \
   BM_Z   , BM_X   , BM_C   , BM_D   , KC_V   , KC_K   , BM_H   , BM_COMM, BM_DOT , BM_QUOT, \
-                             L_NUM  , L_NAV  , L_SYM  , KC_BSPC
+                             TH_LA  , TH_LH  , TH_RH  , TH_RA
 
 #endif
 
@@ -67,7 +73,7 @@
   KC_ESC , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_HOME, KC_PGDN, KC_PGUP, KC_END , \
   CW_TOGG, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, \
   KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NO  , KC_NO  , KC_H   , KC_J   , KC_K   , KC_L   , \
-                             KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL
+                             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 
 #define _SYM \
   KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_SLSH, KC_COLN, \

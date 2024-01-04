@@ -1,7 +1,11 @@
 #pragma once
 
+#ifndef CAPS_WORD_ENABLE
+#  define CAPS_WORD_ENABLE
+#endif
+
+#include "keycodes.h"
 #include "layout.h"
-#include "process_auto_shift.h"
 #include "quantum.h"
 
 #ifdef HOME_ROW_MODS
@@ -35,6 +39,12 @@ const uint16_t PROGMEM c_hyphen[] = {KC_B, KC_J, COMBO_END};
 const uint16_t PROGMEM c_equals[] = {KC_G, KC_M, COMBO_END};
 const uint16_t PROGMEM c_underscore[] = {KC_V, KC_K, COMBO_END};
 
+/**
+ * Functional keys.
+ */
+const uint16_t PROGMEM c_backspace[] = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM c_delete[] = {KC_U, KC_Y, COMBO_END};
+
 combo_t key_combos[] = {
   // Parenthesis
   COMBO(c_lparen, LSFT(KC_9)),
@@ -53,6 +63,9 @@ combo_t key_combos[] = {
   COMBO(c_hyphen, KC_MINUS),
   COMBO(c_equals, KC_EQUAL),
   COMBO(c_underscore, LSFT(KC_MINUS)),
+
+  COMBO(c_backspace, KC_BACKSPACE),
+  COMBO(c_delete, KC_DELETE),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -80,6 +93,11 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 
 bool caps_word_press_user(uint16_t keycode) {
   switch (keycode) {
+// #ifdef HOME_ROW_MODS
+// #define HM_ITER(x) case x:
+//     HM_EACH()
+// #undef HM_ITER
+// #endif
   case KC_A ... KC_Z:
     add_weak_mods(MOD_BIT(KC_LSFT));
     return true;
@@ -145,8 +163,6 @@ bool caps_word_press_user(uint16_t keycode) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef HOME_ROW_MODS
-  
-
   if (!process_hrm(keycode, record)) {
     return false;
   }
