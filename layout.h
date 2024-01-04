@@ -17,45 +17,12 @@
 #define L_SYM LT_SYM(KC_ENTER)
 #define L_NUM LT_NUM(KC_TAB)
 
-/* #define S_TAB LSFT_T(KC_TAB) */
-
-
 #ifdef HOME_ROW_MODS
 
-#define HM_A LGUI_T(KC_A)
-#define HM_R LALT_T(KC_R)
-#define HM_S LSFT_T(KC_S)
-#define HM_T LCTL_T(KC_T)
-
-#define HM_N RCTL_T(KC_N)
-#define HM_E RSFT_T(KC_E)
-#define HM_I LALT_T(KC_I)
-#define HM_O RGUI_T(KC_O)
-
-#define CC_T HM_T
-#define CC_D KC_D
-
-#define CC_N HM_N
-#define CC_H KC_H
-
-#define CC_S HM_S
-#define CC_C KC_C
-
-#define CC_E    HM_E
-#define CC_COMM KC_COMM
-
-#define CC_R HM_R
-#define CC_X KC_X
-
-#define CC_I   HM_I
-#define CC_DOT KC_DOT
-
-
-#define _BASE \
-  KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, \
-  HM_A   , HM_R   , HM_S   , HM_T   , KC_G   , KC_M   , HM_N   , HM_E   , HM_I   , HM_O   , \
-  KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , KC_K   , KC_H   , KC_COMM, KC_DOT , KC_QUOT, \
-                             L_NUM  , L_NAV  , L_SYM  , KC_BSPC
+# define HRM_LAYOUT_ONLY
+# include "hrm.h"
+# define _BASE BASE_HRM
+# undef HRM_LAYOUT_ONLY
 
 #else
 

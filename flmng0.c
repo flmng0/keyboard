@@ -4,6 +4,13 @@
 #include "process_auto_shift.h"
 #include "quantum.h"
 
+#ifdef HOME_ROW_MODS
+#  ifdef HRM_LAYOUT_ONLY
+#    undef HRM_LAYOUT_ONLY
+#  endif
+#  include "hrm.h"
+#endif
+
 /**
  * Parenthesis.
  *
@@ -89,80 +96,59 @@ bool caps_word_press_user(uint16_t keycode) {
   }
 }
 
-bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-#ifdef HOME_ROW_MODS
-  case HM_A:
-  case HM_R:
-  case HM_S:
-  case HM_T:
-  case HM_N:
-  case HM_E:
-  case HM_I:
-  case HM_O:
-    return true;
+// bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+//   switch (keycode) {
+// #ifdef HOME_ROW_MODS
+//   case HM_A:
+//   case HM_R:
+//   case HM_S:
+//   case HM_T:
+//   case HM_N:
+//   case HM_E:
+//   case HM_I:
+//   case HM_O:
+//     return true;
 
-#else
-  case BM_Z:
-  case BM_X:
-  case BM_C:
-  case BM_D:
-  case BM_H:
-  case BM_COMM:
-  case BM_DOT:
-  case BM_QUOT:
-    return true;
+// #else
+//   case BM_Z:
+//   case BM_X:
+//   case BM_C:
+//   case BM_D:
+//   case BM_H:
+//   case BM_COMM:
+//   case BM_DOT:
+//   case BM_QUOT:
+//     return true;
 
-#endif
+// #endif
 
-  case KC_SCLN:
-    return true;
-  }
+//   case KC_SCLN:
+//     return true;
+//   }
 
-  return false;
-}
+//   return false;
+// }
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-  switch (get_highest_layer(state)) {
-  case ID_BASE:
-    autoshift_enable();
-    break;
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//   switch (get_highest_layer(state)) {
+//   case ID_BASE:
+//     autoshift_enable();
+//     break;
 
-  default:
-    autoshift_disable();
-    break;
-  }
-}
+//   default:
+//     autoshift_disable();
+//     break;
+//   }
 
-#ifdef HOME_ROW_MODS
-#define ROLLOVER(kca, kcb, modded_b, mod_a)                                    \
-  case modded_b:                                                               \
-    if (record->event.pressed && record->tap.count > 0) {                      \
-      if (mods & MOD_BIT(mod_a)) {                                             \
-        unregister_mods(MOD_BIT(mod_a));                                       \
-        tap_code(kca);                                                         \
-        tap_code(kcb);                                                         \
-        add_mods(MOD_BIT(mod_a));                                              \
-        return false;                                                          \
-      }                                                                        \
-    }                                                                          \
-    return true;
-#endif
+//   return state;
+// }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef HOME_ROW_MODS
-  uint8_t mods = get_mods();
+  
 
-  switch (keycode) {
-    ROLLOVER(KC_A, KC_R, HM_R, KC_LGUI);
-    ROLLOVER(KC_R, KC_S, HM_S, KC_LALT);
-    ROLLOVER(KC_S, KC_T, HM_T, KC_LSFT);
-    ROLLOVER(KC_T, KC_G, KC_G, KC_LCTL);
-
-    ROLLOVER(KC_N, KC_M, KC_M, KC_RCTL);
-    ROLLOVER(KC_E, KC_N, HM_N, KC_RSFT);
-    ROLLOVER(KC_I, KC_E, HM_E, KC_LALT);
-    ROLLOVER(KC_O, KC_I, HM_I, KC_RGUI);
+  if (!process_hrm(keycode, record)) {
+    return false;
   }
 #endif
 
