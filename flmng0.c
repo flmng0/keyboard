@@ -93,11 +93,6 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 
 bool caps_word_press_user(uint16_t keycode) {
   switch (keycode) {
-// #ifdef HOME_ROW_MODS
-// #define HM_ITER(x) case x:
-//     HM_EACH()
-// #undef HM_ITER
-// #endif
   case KC_A ... KC_Z:
     add_weak_mods(MOD_BIT(KC_LSFT));
     return true;
@@ -114,59 +109,23 @@ bool caps_word_press_user(uint16_t keycode) {
   }
 }
 
-// bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
-//   switch (keycode) {
-// #ifdef HOME_ROW_MODS
-//   case HM_A:
-//   case HM_R:
-//   case HM_S:
-//   case HM_T:
-//   case HM_N:
-//   case HM_E:
-//   case HM_I:
-//   case HM_O:
-//     return true;
-
-// #else
-//   case BM_Z:
-//   case BM_X:
-//   case BM_C:
-//   case BM_D:
-//   case BM_H:
-//   case BM_COMM:
-//   case BM_DOT:
-//   case BM_QUOT:
-//     return true;
-
-// #endif
-
-//   case KC_SCLN:
-//     return true;
-//   }
-
-//   return false;
-// }
-
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//   switch (get_highest_layer(state)) {
-//   case ID_BASE:
-//     autoshift_enable();
-//     break;
-
-//   default:
-//     autoshift_disable();
-//     break;
-//   }
-
-//   return state;
-// }
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef HOME_ROW_MODS
   if (!process_hrm(keycode, record)) {
     return false;
   }
 #endif
+
+  const uint8_t mods = get_mods();
+  switch (keycode) {
+    /* If shift is already being pressed and smart shift is pressed,
+       then activate caps word */
+  case OSM(MOD_LSFT):
+    if (mods & MOD_BIT(KC_LSFT)) {
+      caps_word_toggle();
+      return false;
+    }
+  }
 
   return true;
 }
