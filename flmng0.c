@@ -41,6 +41,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   case TH_RA:
     return TAPPING_TERM + 200;
 
+  // Pinkies are weak and I'm more likely to mis-fire with those keys
+  case HM_A:
+  case HM_O:
+    return TAPPING_TERM + 50;
+
   default:
     return TAPPING_TERM;
   }
