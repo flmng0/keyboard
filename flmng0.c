@@ -1,6 +1,5 @@
 #pragma once
 
-#include "action_util.h"
 #ifndef CAPS_WORD_ENABLE
 #  define CAPS_WORD_ENABLE
 #endif
@@ -75,6 +74,24 @@ const custom_shift_key_t custom_shift_keys[] = {
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  // Disable one shot mods for non-base keys
+  if (record->event.pressed) {
+    switch (keycode) {
+#define HM_ITER(x) case x:
+    HM_EACH()
+#undef HRM_ITER
+    case KC_A ... KC_Z:
+    case KC_QUESTION:
+    case KC_COMMA:
+    case KC_DOT:
+    case KC_QUOTE:
+      break;
+
+    default:
+      del_oneshot_mods(MOD_BIT(KC_LSFT));
+    }
+  }
+
   if (!process_hrm(keycode, record)) { return false; }
   if (!process_custom_shift_keys(keycode, record)) { return false; }
 
@@ -84,7 +101,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /* If shift is already being pressed and smart shift is pressed,
        then activate caps word */
   case OSM(MOD_LSFT):
-    if (mods & MOD_BIT(KC_LSFT)) {
+    if (record->event.pressed && mods & MOD_BIT(KC_LSFT)) {
       caps_word_toggle();
       return false;
     }

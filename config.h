@@ -9,7 +9,7 @@
 #define COMBO_TERM 50
 #define COMBO_TERM_PER_COMBO
 
-#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#define ONESHOT_TIMEOUT 1500
 
 #ifndef __ASSEMBLER__
 #include "layout.h"
