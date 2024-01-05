@@ -17,8 +17,13 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
   (void)combo;
 
   switch (index) {
-  case C_LPAREN ... C_RANGLE:
+  case C_LPAREN ... C_RBRACE:
     return 30;
+
+  // Common roll-ins from the pinky cause mis-fires
+  case C_LANGLE:
+  case C_RANGLE:
+    return 20;
   }
 
   return COMBO_TERM;
@@ -57,7 +62,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
   case TH_LH:
   case TH_RA:
   case TH_RH:
-    return false;
+    return IS_IDLE;
 
   default:
     return true;
