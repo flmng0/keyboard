@@ -38,14 +38,14 @@ COMBO_DEF(c_pipe, KC_Y, HM_I);
 COMBO_DEF(c_lparen, HM_T, HM_S);
 COMBO_DEF(c_rparen, HM_N, HM_E);
 
-COMBO_DEF(c_lbracket, HM_T, HM_R);
-COMBO_DEF(c_rbracket, HM_N, HM_I);
-
 COMBO_DEF(c_lbrace, HM_S, HM_R);
 COMBO_DEF(c_rbrace, HM_E, HM_I);
 
-COMBO_DEF(c_langle, HM_T, HM_S, HM_R);
-COMBO_DEF(c_rangle, HM_N, HM_E, HM_I);
+COMBO_DEF(c_lbracket, KC_G, HM_T);
+COMBO_DEF(c_rbracket, KC_M, HM_N);
+
+COMBO_DEF(c_langle, HM_R, HM_A);
+COMBO_DEF(c_rangle, HM_I, HM_O);
 
 /**
  * Common symbols.
