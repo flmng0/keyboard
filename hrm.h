@@ -18,7 +18,8 @@
   HM_ITER(HM_T)                                                                \
   HM_ITER(HM_N)                                                                \
   HM_ITER(HM_E)                                                                \
-  HM_ITER(HM_I)
+  HM_ITER(HM_I)                                                                \
+  HM_ITER(HM_O)
 
 static uint32_t idle_timer;
 

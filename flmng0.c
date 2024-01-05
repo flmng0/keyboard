@@ -17,11 +17,22 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
   (void)combo;
 
   switch (index) {
-  case C_LPAREN...C_RANGLE:
+  case C_LPAREN ... C_RANGLE:
     return 30;
   }
 
   return COMBO_TERM;
+}
+
+bool get_combo_must_tap(uint16_t index, combo_t *combo) {
+  (void)combo;
+
+  switch (index) {
+  case C_LPAREN ... C_RANGLE:
+    return true;
+  }
+
+  return false;
 }
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -51,7 +62,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 bool caps_word_press_user(uint16_t keycode) {
   switch (keycode) {
   case KC_A ... KC_Z:
-    add_weak_mods(MOD_BIT(KC_LSFT));
+    add_weak_mods(MOD_MASK_SHIFT);
     return true;
 
   case KC_1 ... KC_0:
@@ -88,7 +99,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
 
     default:
-      del_oneshot_mods(MOD_BIT(KC_LSFT));
+      del_oneshot_mods(MOD_MASK_SHIFT);
     }
   }
 
@@ -96,16 +107,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (!process_custom_shift_keys(keycode, record)) { return false; }
 
   const uint8_t mods = get_mods();
+  const uint8_t all_mods = get_mods() | get_weak_mods() | get_oneshot_mods();
 
   switch (keycode) {
     /* If shift is already being pressed and smart shift is pressed,
        then activate caps word */
   case OSM(MOD_LSFT):
-    if (record->event.pressed && mods & MOD_BIT(KC_LSFT)) {
+    if (record->event.pressed && mods & MOD_MASK_SHIFT) {
       caps_word_toggle();
       return false;
     }
     break;
+
+  case TH_LH:
+    if (record->tap.count > 0) {
+      if (record->event.pressed) {
+        if (all_mods & MOD_MASK_SHIFT) {
+          del_weak_mods(MOD_MASK_SHIFT);
+          del_oneshot_mods(MOD_MASK_SHIFT);
+
+          unregister_mods(MOD_MASK_SHIFT);
+
+          SEND_STRING(". ");
+          set_oneshot_mods(MOD_MASK_SHIFT);
+
+          set_mods(mods);
+
+          return false;
+        }
+      }
+    }
   }
 
   return true;
