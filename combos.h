@@ -21,12 +21,12 @@ COMBO_DEF(c_and, HM_I, KC_DOT);
  * Alternate symbols.
  */
 COMBO_DEF(c_grave, KC_W, HM_R);
-COMBO_DEF(c_equals2, KC_P, KC_T);
+COMBO_DEF(c_equals, KC_P, KC_T);
 COMBO_DEF(c_backslash, KC_F, HM_S);
 COMBO_DEF(c_tilde, KC_B, KC_G);
 
-COMBO_DEF(c_underscore2, KC_K, KC_J);
-COMBO_DEF(c_hyphen2, KC_L, HM_N);
+COMBO_DEF(c_underscore, KC_M, KC_J);
+COMBO_DEF(c_hyphen, KC_L, HM_N);
 COMBO_DEF(c_slash, KC_U, HM_E);
 COMBO_DEF(c_pipe, KC_Y, HM_I);
 
@@ -48,18 +48,10 @@ COMBO_DEF(c_langle, HM_R, HM_A);
 COMBO_DEF(c_rangle, HM_I, HM_O);
 
 /**
- * Common symbols.
- */
-COMBO_DEF(c_hyphen, KC_B, KC_J);
-COMBO_DEF(c_equals, KC_G, KC_M);
-COMBO_DEF(c_underscore, KC_V, KC_K);
-
-/**
  * Functional keys.
  */
 COMBO_DEF(c_backspace, KC_L, KC_U);
 COMBO_DEF(c_delete, KC_U, KC_Y);
-
 
 enum COMBO_INDICES {
   C_LPAREN,
@@ -103,21 +95,16 @@ combo_t key_combos[] = {
 
   // Alternate symbols
   COMBO(c_grave, KC_GRAVE),
-  COMBO(c_equals2, KC_EQUAL),
+  COMBO(c_equals, KC_EQUAL),
   COMBO(c_backslash, KC_BACKSLASH),
   COMBO(c_tilde, KC_TILDE),
 
-  COMBO(c_underscore2, KC_UNDERSCORE),
-  COMBO(c_hyphen2, KC_MINUS),
-  COMBO(c_slash,   KC_SLASH),
+  COMBO(c_underscore, KC_UNDERSCORE),
+  COMBO(c_hyphen, KC_MINUS),
+  COMBO(c_slash, KC_SLASH),
   COMBO(c_pipe, KC_PIPE),
   
-
   // Common symbols
-  COMBO(c_hyphen, KC_MINUS),
-  COMBO(c_equals, KC_EQUAL),
-  COMBO(c_underscore, KC_UNDERSCORE),
-
   COMBO(c_backspace, KC_BACKSPACE),
   COMBO(c_delete, KC_DELETE),
 };
