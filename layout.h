@@ -2,24 +2,33 @@
 
 #include "quantum_keycodes.h"
 
+enum USER_KEYS {
+  START_SENTENCE_CASE = SAFE_RANGE,
+};
+
+#define UK_SENT START_SENTENCE_CASE
+
 #define ID_BASE 0
 #define ID_NAV 1
-#define ID_SYM 2
-#define ID_NUM 3
-#define ID_GAME 4
+#define ID_NUM 2
+#define ID_GAME 3
 
 #define D_BASE DF(ID_BASE)
 #define D_GAME DF(ID_GAME)
 
 #define LT_NAV(code) LT(ID_NAV, code)
-#define LT_SYM(code) LT(ID_SYM, code)
 #define LT_NUM(code) LT(ID_NUM, code)
 
 #define TH_LA LT_NUM(KC_TAB)
 #define TH_LH LT_NAV(KC_SPACE)
 
 #define TH_RH OSM(MOD_LSFT)
-#define TH_RA LT_SYM(KC_ENTER)
+#define TH_RA KC_ENTER
+
+#define NV_LEFT LT(0, KC_LEFT)
+#define NV_RGHT LT(0, KC_RGHT)
+#define NV_UP   LT(0, KC_UP)
+#define NV_DOWN LT(0, KC_DOWN)
 
 #define HM_A LGUI_T(KC_A)
 #define HM_R LALT_T(KC_R)
@@ -38,16 +47,18 @@
                              TH_LA  , TH_LH  , TH_RH  , TH_RA
 
 #define _NAV \
-  KC_ESC , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_HOME, KC_PGDN, KC_PGUP, KC_END , \
-  CW_TOGG, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, \
-  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NO  , KC_NO  , KC_H   , KC_J   , KC_K   , KC_L   , \
+  KC_ESC , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_PGUP, KC_NO  , KC_NO  , KC_NO  , KC_NO  , \
+  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NO  , KC_PGDN, NV_LEFT, NV_DOWN, NV_UP  , NV_RGHT, \
+  UK_SENT, KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_H   , KC_J   , KC_K   , KC_L   , \
                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 
+/*
 #define _SYM \
   KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_SLSH, KC_COLN, \
   KC_TILD, KC_GRV , KC_DQUO, KC_BSLS, KC_NO  , KC_NO  , KC_PIPE, KC_PLUS, KC_MINS, KC_QUES, \
   KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_NO  , KC_ENT , KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, \
                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+*/
 
 #define _NUM \
   KC_NO  , KC_F7  , KC_F8  , KC_F9  , KC_F12 , KC_UNDS, KC_7   , KC_8   , KC_9   , D_GAME , \

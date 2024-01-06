@@ -21,11 +21,11 @@ COMBO_DEF(c_and, HM_I, KC_DOT);
  * Alternate symbols.
  */
 COMBO_DEF(c_grave, KC_W, HM_R);
-COMBO_DEF(c_equals, KC_P, KC_T);
+COMBO_DEF(c_underscore, KC_P, KC_T);
 COMBO_DEF(c_backslash, KC_F, HM_S);
 COMBO_DEF(c_tilde, KC_B, KC_G);
 
-COMBO_DEF(c_underscore, KC_M, KC_J);
+COMBO_DEF(c_equals, KC_M, KC_J);
 COMBO_DEF(c_hyphen, KC_L, HM_N);
 COMBO_DEF(c_slash, KC_U, HM_E);
 COMBO_DEF(c_pipe, KC_Y, HM_I);

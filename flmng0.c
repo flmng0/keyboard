@@ -9,6 +9,7 @@
 #include "quantum.h"
 
 #include "features/custom_shift_keys.h"
+#include "features/sentence_case.h"
 
 #include "hrm.h"
 #include "combos.h"
@@ -94,6 +95,15 @@ const custom_shift_key_t custom_shift_keys[] = {
 };
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
+
+#define RE_HOLD(r, original, new)            \
+  case original:                             \
+    if (r->event.pressed && !r->tap.count) { \
+      tap_code16(new);                       \
+      return false;                          \
+    }                                        \
+    break;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // Disable one shot mods for non-base keys
   if (record->event.pressed) {
@@ -115,6 +125,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   if (!process_hrm(keycode, record)) { return false; }
   if (!process_custom_shift_keys(keycode, record)) { return false; }
+  if (!process_sentence_case(keycode, record)) { return false; }
 
   const uint8_t mods = get_mods();
   const uint8_t all_mods = get_mods() | get_weak_mods() | get_oneshot_mods();
@@ -128,6 +139,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     }
     break;
+
+  RE_HOLD(record, NV_LEFT, KC_HOME)
+  RE_HOLD(record, NV_UP,   C(KC_PGUP))
+  RE_HOLD(record, NV_DOWN, C(KC_PGDN))
+  RE_HOLD(record, NV_RGHT, KC_END)
+
+  case START_SENTENCE_CASE:
+    sentence_case_toggle();
+    return false;
 
   case TH_LH:
     if (record->tap.count > 0) {
