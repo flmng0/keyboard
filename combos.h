@@ -21,7 +21,7 @@ COMBO_DEF(c_and, HM_I, KC_DOT);
  * Alternate symbols.
  */
 COMBO_DEF(c_grave, KC_W, HM_R);
-COMBO_DEF(c_underscore, KC_P, KC_T);
+COMBO_DEF(c_underscore, KC_P, HM_T);
 COMBO_DEF(c_backslash, KC_F, HM_S);
 COMBO_DEF(c_tilde, KC_B, KC_G);
 
