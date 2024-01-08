@@ -44,8 +44,8 @@ COMBO_DEF(c_rbrace, HM_E, HM_I);
 COMBO_DEF(c_lbracket, KC_G, HM_T);
 COMBO_DEF(c_rbracket, KC_M, HM_N);
 
-COMBO_DEF(c_langle, HM_R, HM_A);
-COMBO_DEF(c_rangle, HM_I, HM_O);
+COMBO_DEF(c_langle, HM_T, HM_R);
+COMBO_DEF(c_rangle, HM_N, HM_I);
 
 /**
  * Functional keys.
