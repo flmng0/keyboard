@@ -30,19 +30,33 @@ enum USER_KEYS {
 #define NV_UP   LT(0, KC_UP)
 #define NV_DOWN LT(0, KC_DOWN)
 
-#define HM_A LGUI_T(KC_A)
-#define HM_R LALT_T(KC_R)
-#define HM_S LSFT_T(KC_S)
-#define HM_T LCTL_T(KC_T)
-
-#define HM_N RCTL_T(KC_N)
-#define HM_E RSFT_T(KC_E)
-#define HM_I LALT_T(KC_I)
-#define HM_O RGUI_T(KC_O)
+#ifndef HRM_USE_INNER
+#  define HM_A LGUI_T(KC_A)
+#  define HM_R LALT_T(KC_R)
+#  define HM_S LSFT_T(KC_S)
+#  define HM_T LCTL_T(KC_T)
+#  define HM_G KC_G
+#  define HM_M KC_M
+#  define HM_N RCTL_T(KC_N)
+#  define HM_E RSFT_T(KC_E)
+#  define HM_I LALT_T(KC_I)
+#  define HM_O RGUI_T(KC_O)
+#else
+#  define HM_A KC_A
+#  define HM_R LALT_T(KC_R)
+#  define HM_S LSFT_T(KC_S)
+#  define HM_T LCTL_T(KC_T)
+#  define HM_G LGUI_T(KC_G)
+#  define HM_M RGUI_T(KC_M)
+#  define HM_N RCTL_T(KC_N)
+#  define HM_E RSFT_T(KC_E)
+#  define HM_I LALT_T(KC_I)
+#  define HM_O KC_O
+#endif
 
 #define _BASE \
   KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_QUES, \
-  HM_A   , HM_R   , HM_S   , HM_T   , KC_G   , KC_M   , HM_N   , HM_E   , HM_I   , HM_O   , \
+  HM_A   , HM_R   , HM_S   , HM_T   , HM_G   , HM_M   , HM_N   , HM_E   , HM_I   , HM_O   , \
   KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , KC_K   , KC_H   , KC_COMM, KC_DOT , KC_QUOT, \
                              TH_LA  , TH_LH  , TH_RH  , TH_RA
 

@@ -11,6 +11,8 @@
 #define HRM_IDLE_DELAY (150)
 #endif
 
+#ifndef HRM_USE_INNER
+
 #define HM_EACH()                                                              \
   HM_ITER(HM_A)                                                                \
   HM_ITER(HM_R)                                                                \
@@ -20,6 +22,20 @@
   HM_ITER(HM_E)                                                                \
   HM_ITER(HM_I)                                                                \
   HM_ITER(HM_O)
+
+#else
+
+#define HM_EACH()                                                              \
+  HM_ITER(HM_R)                                                                \
+  HM_ITER(HM_S)                                                                \
+  HM_ITER(HM_T)                                                                \
+  HM_ITER(HM_G)                                                                \
+  HM_ITER(HM_M)                                                                \
+  HM_ITER(HM_N)                                                                \
+  HM_ITER(HM_E)                                                                \
+  HM_ITER(HM_I)
+
+#endif
 
 static uint32_t idle_timer;
 
@@ -44,6 +60,11 @@ bool process_hrm(uint16_t keycode, keyrecord_t *record) {
       idle_timer = timer_read32();
     }
     break;
+
+  // Specifically because I do Escape -> another key very quickly.
+  case KC_ESCAPE:
+    if (!record->event.pressed) 
+      idle_timer = timer_read32() - HRM_IDLE_DELAY;
 
   default:
     if (!record->event.pressed) 

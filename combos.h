@@ -10,9 +10,9 @@
 COMBO_DEF(c_at, HM_R, KC_X);
 COMBO_DEF(c_pound, HM_S, KC_C);
 COMBO_DEF(c_dollar, HM_T, KC_D);
-COMBO_DEF(c_percent, KC_G, KC_V);
+COMBO_DEF(c_percent, HM_G, KC_V);
 
-COMBO_DEF(c_carat, KC_M, KC_K);
+COMBO_DEF(c_carat, HM_M, KC_K);
 COMBO_DEF(c_plus, HM_N, KC_H);
 COMBO_DEF(c_star, HM_E, KC_COMM);
 COMBO_DEF(c_and, HM_I, KC_DOT);
@@ -23,9 +23,9 @@ COMBO_DEF(c_and, HM_I, KC_DOT);
 COMBO_DEF(c_grave, KC_W, HM_R);
 COMBO_DEF(c_underscore, KC_P, HM_T);
 COMBO_DEF(c_backslash, KC_F, HM_S);
-COMBO_DEF(c_tilde, KC_B, KC_G);
+COMBO_DEF(c_tilde, KC_B, HM_G);
 
-COMBO_DEF(c_equals, KC_M, KC_J);
+COMBO_DEF(c_equals, HM_M, KC_J);
 COMBO_DEF(c_hyphen, KC_L, HM_N);
 COMBO_DEF(c_slash, KC_U, HM_E);
 COMBO_DEF(c_pipe, KC_Y, HM_I);
@@ -41,11 +41,11 @@ COMBO_DEF(c_rparen, HM_N, HM_E);
 COMBO_DEF(c_lbrace, HM_S, HM_R);
 COMBO_DEF(c_rbrace, HM_E, HM_I);
 
-COMBO_DEF(c_lbracket, KC_G, HM_T);
-COMBO_DEF(c_rbracket, KC_M, HM_N);
+COMBO_DEF(c_langle, HM_G, HM_T);
+COMBO_DEF(c_rangle, HM_M, HM_N);
 
-COMBO_DEF(c_langle, HM_T, HM_R);
-COMBO_DEF(c_rangle, HM_N, HM_I);
+COMBO_DEF(c_lbracket, HM_T, HM_R);
+COMBO_DEF(c_rbracket, HM_N, HM_I);
 
 /**
  * Functional keys.

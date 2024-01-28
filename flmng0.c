@@ -47,10 +47,12 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   case TH_RA:
     return TAPPING_TERM + 200;
 
+#ifndef HRM_USE_INNER
   // Pinkies are weak and I'm more likely to mis-fire with those keys
   case HM_A:
   case HM_O:
     return TAPPING_TERM + 50;
+#endif
 
   default:
     return TAPPING_TERM;
@@ -64,6 +66,10 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
   case TH_RA:
   case TH_RH:
     return IS_IDLE;
+
+#define HM_ITER(x) case x:
+    return false;
+#undef HM_ITER
 
   default:
     return true;
@@ -118,6 +124,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_QUOTE:
       break;
 
+    case START_SENTENCE_CASE:
+      sentence_case_toggle();
+      return false;
+
     default:
       del_oneshot_mods(MOD_MASK_SHIFT);
     }
@@ -134,7 +144,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /* If shift is already being pressed and smart shift is pressed,
        then activate caps word */
   case OSM(MOD_LSFT):
-    if (record->event.pressed && mods & MOD_MASK_SHIFT) {
+    if (record->event.pressed && mods && MOD_MASK_SHIFT) {
       caps_word_toggle();
       return false;
     }
@@ -144,10 +154,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   RE_HOLD(record, NV_UP,   C(KC_PGUP))
   RE_HOLD(record, NV_DOWN, C(KC_PGDN))
   RE_HOLD(record, NV_RGHT, KC_END)
-
-  case START_SENTENCE_CASE:
-    sentence_case_toggle();
-    return false;
 
   case TH_LH:
     if (record->tap.count > 0) {
